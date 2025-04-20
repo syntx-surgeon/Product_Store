@@ -26,6 +26,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+
+
 # Media and large files
 *.mp4
 *.mov
@@ -43,3 +45,6 @@ yarn-error.log*
 .vscode/
 *.swp
 *.swo
+
+# .env file (DO NOT commit this file)
+DATABASE_URL=postgresql://username:password@host:port/database
