@@ -20,7 +20,7 @@ const PORT= process.env.PORT || 3000;
 app.use(express.json());//express.json() is a built-in middleware function in Express that parses incoming requests with JSON payloads and is based on body-parser.
 app.use(helmet());//helmet is a middleware that helps secure Express apps by setting various HTTP headers
 app.use(cors());
-app.use(morgan());//morgan is a middleware that logs HTTP requests and responses in the console
+app.use(morgan('dev'));//morgan is a middleware that logs HTTP requests and responses in the console
 
 app.use("/api/products",productRoutes);
 
@@ -35,7 +35,8 @@ async function initDB(){
          price DECIMAL(10,2) NOT NULL,
          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
          )
-      `
+      `;
+      console.log("Database is conected sucessfully");
    }
    catch(error)
    {
