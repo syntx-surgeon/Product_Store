@@ -7,7 +7,6 @@ import dotenv from "dotenv";
 import productRoutes from "./routes/productRoutes.js";
 import { sql } from "./config/db.js";
 
-
 dotenv.config();
 
 const app = express();
@@ -48,7 +47,7 @@ async function initDB(){
 initDB().then(()=>{
    
  app.listen(PORT, () => {
-   console.log('Server is running on port '+ PORT);
+   console.log('Server is running on port',PORT);
    });
 
 
