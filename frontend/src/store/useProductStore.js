@@ -36,6 +36,7 @@ const BASE_URL="http://localhost:3000";
         }
     },
 
+    
         fetchProducts:async ()=>{
             set({loading:true});
             try{
