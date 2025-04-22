@@ -84,7 +84,6 @@ export const updateProduct=async (req,res)=>{
 
 
 
-
 export const deleteProduct=async (req,res)=>{
 
    const {id}=req.params;
