@@ -1,149 +1,110 @@
-import { DollarSignIcon, ImageIcon, Package2Icon, PlusCircleIcon } from 'lucide-react';
-import { useProductStore } from '../store/useProductStore';
-import { toast } from 'react-hot-toast';
-import React, { useState } from 'react';
+import { DollarSignIcon, ImageIcon, Package2Icon, PlusCircleIcon } from "lucide-react";
+import { useProductStore } from "../store/useProductStore";
 
-const AddProductModal = () => {
-    const { addProducts, formData, setFormData, loading } = useProductStore();
+function AddProductModal() {
+  const { addProducts, formData, setFormData, loading } = useProductStore();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        await addProducts(formData);
-        toast.success("Product added successfully");
+  return (
+    <dialog id="add-product-modal" className="modal">
+      <div className="modal-box">
+        {/* CLOSE BUTTON */}
+        <form method="dialog">
+          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">X</button>
+        </form>
 
-    };
+        {/* MODAL HEADER */}
+        <h3 className="font-bold text-xl mb-8">Add New Product</h3>
 
-    const handleFileChange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            setFormData({ ...formData, image: file });
-        }
-    };
-
-    const handleUrlChange = (e) => {
-        const url = e.target.value;
-        setFormData({ ...formData, image: url || null });
-    };
-
-
-
-    return (
-        <dialog id="add-product-modal" className="modal">
-          <div className="modal-box">
-            {/* Close Button */}
-            <form method="dialog">
-              <button className="btn btn-sm btn-circle absolute right-2 top-2">✕</button>
-            </form>
-            {/* Modal Header */}
-            <h3 className="font-bold text-xl mb-8">Add New Product</h3>
-    
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid gap-6">
-                {/* Product Name Input */}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text text-base font-medium">Product Name</span>
-                  </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/50">
-                      <Package2Icon className="size-5" />
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="Enter product name"
-                      className="input input-bordered w-full pl-10 py-3 focus:input-primary transition-colors duration-200"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                    />
-                  </div>
+        <form onSubmit={addProducts} className="space-y-6">
+          <div className="grid gap-6">
+            {/* PRODUCT NAME INPUT */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-base font-medium">Product Name</span>
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/50">
+                  <Package2Icon className="size-5" />
                 </div>
-                {/* Product Price Input */}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text text-base font-medium">Product Price</span>
-                  </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/50">
-                      <DollarSignIcon className="size-5" />
-                    </div>
-                    <input
-                      type="number"
-                      min="0"
-                      step="0.01"
-                      placeholder="0.00"
-                      className="input input-bordered w-full pl-10 py-3 focus:input-primary transition-colors duration-200"
-                      value={formData.price}
-                      onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-                      required
-                    />
-                  </div>
-                </div>
-                {/* Product Image Upload */}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text text-base font-medium">Upload Image</span>
-                  </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/50">
-                      <ImageIcon className="size-5" />
-                    </div>
-                    <input
-                      type="file"
-                      accept="image/jpeg,image/png,image/gif"
-                      className="input input-bordered w-full pl-10 py-3 focus:input-primary transition-colors duration-200"
-                      onChange={handleFileChange}
-                    />
-                  </div>
-                </div>
-                <span className='font-medium w-1'>Or</span>
-                {/* Product Image URL */}
-                <div className="form-control">
-                  <label className="label">
-                    <span className="label-text text-base font-medium">Image URL</span>
-                  </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/50">
-                      <ImageIcon className="size-5" />
-                    </div>
-                    <input
-                      type="text"
-                      placeholder="https://example.com/image.jpg"
-                      className="input input-bordered w-full pl-10 py-3 focus:input-primary transition-colors duration-200"
-                      value={typeof formData.image === 'string' ? formData.image : ''}
-                      onChange={handleUrlChange}
-                    />
-                  </div>
-                </div>
+                <input
+                  type="text"
+                  placeholder="Enter product name"
+                  className="input input-bordered w-full pl-10 py-3 focus:input-primary transition-colors duration-200"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                />
               </div>
-              {/* Modal Action */}
-              <div className="modal-action">
-                <form method="dialog">
-                  <button className="btn btn-ghost">Cancel</button>
-                </form>
-                <button
-                  type="submit"
-                  className="btn btn-primary min-w-[120px]"
-                  disabled={!formData.name || !formData.price || !formData.image || loading}
-                >
-                  {loading ? (
-                    <span className="loading loading-spinner loading-sm"></span>
-                  ) : (
-                    <>
-                      <PlusCircleIcon className="size-5 mr-2" />
-                      Add Product
-                    </>
-                  )}
-                </button>
+            </div>
+
+            {/* PRODUCT PRICE INPUT */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-base font-medium">Price</span>
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/50">
+                  <DollarSignIcon className="size-5" />
+                </div>
+                <input
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  placeholder="0.00"
+                  className="input input-bordered w-full pl-10 py-3 focus:input-primary transition-colors duration-200"
+                  value={formData.price}
+                  onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+                />
               </div>
-            </form>
+            </div>
+
+            {/* PRODUCT IMAGE */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-base font-medium">Image URL</span>
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/50">
+                  <ImageIcon className="size-5" />
+                </div>
+                <input
+                  type="text"
+                  placeholder="https://example.com/image.jpg"
+                  className="input input-bordered w-full pl-10 py-3 focus:input-primary transition-colors duration-200"
+                  value={formData.image}
+                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                />
+              </div>
+            </div>
           </div>
-          {/* Modal Backdrop */}
-          <form method="dialog" className="modal-backdrop">
-            <button className="opacity-0">close</button>
-          </form>
-        </dialog>
-      );
-    };
-    
-    export default AddProductModal;
+
+          {/* MODAL ACTIONS */}
+          <div className="modal-action">
+            <form method="dialog">
+              <button className="btn btn-ghost">Cancel</button>
+            </form>
+            <button
+              type="submit"
+              className="btn btn-primary min-w-[120px]"
+              disabled={!formData.name || !formData.price || !formData.image || loading}
+            >
+              {loading ? (
+                <span className="loading loading-spinner loading-sm" />
+              ) : (
+                <>
+                  <PlusCircleIcon className="size-5 mr-2" />
+                  Add Product
+                </>
+              )}
+            </button>
+          </div>
+        </form>
+      </div>
+
+      {/* BACKDROP */}
+      <form method="dialog" className="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+  );
+}
+export default AddProductModal;
