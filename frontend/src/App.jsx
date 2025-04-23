@@ -5,6 +5,10 @@ import HomePage from "./pages/HomePage.jsx";
 import { Route, Routes } from "react-router-dom";
 import { useThemeStore } from "./store/useThemeStore.js";
 import {Toaster} from "react-hot-toast"
+
+
+
+
 function App() {
   const {theme} = useThemeStore();
   return (

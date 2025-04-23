@@ -56,7 +56,7 @@ export const useProductStore = create((set, get) => ({
     }
   },
 
-  deleteProduct: async (id) => {
+  deleteProducts: async (id) => {
     console.log("deleteProduct function called", id);
     set({ loading: true });
     try {

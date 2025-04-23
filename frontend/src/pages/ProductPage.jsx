@@ -9,7 +9,7 @@ const ProductPage = () => {
     loading,
     error,
     fetchProduct,
-    deleteProduct,
+    deleteProducts,
     updateProduct,
     formData,
     setFormData,
@@ -128,7 +128,7 @@ const ProductPage = () => {
                 <button
                   type='button'
                   onClick={() => {
-                    deleteProduct(id);
+                    deleteProducts(id);
                     navigate('/');
                   }}
                   className='btn btn-danger'
