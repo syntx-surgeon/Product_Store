@@ -11,6 +11,7 @@ A full-stack e-commerce product store built using PostgreSQL (Neon), Express.js,
 - 🔒 API Security with Express
 - 📱 Mobile-friendly design
 
+
 ## Tech Stack
 
 ### Backend
