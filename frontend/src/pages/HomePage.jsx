@@ -22,6 +22,9 @@ const HomePage = () => {
         </button>
       </div>
 
+
+      <AddProductModal />
+
       {error && <div className='alert alert-error mb-8'>{error}</div>}
 
       {products.length===0 && !loading && (

@@ -27,10 +27,13 @@ const BASE_URL="http://localhost:3000";
             
         const {formData}=get()
         await axios.post(`${BASE_URL}/api/products`,formData);
-            //.........
+            await get().fetchProducts();
+            get().resetForm();
+            toast.success("Product added successfully");
+            //close the model
         }catch(error){
-
-
+            console.error("Error in addProducts function:", error.message);
+            toast.error(error.message || "Failed to add product");
         }finally{
             set({loading:false})
         }
