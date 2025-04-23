@@ -16,8 +16,6 @@ const PORT = process.env.PORT || 3000;
 
 
 
-
-
 app.use(express.json());//express.json() is a built-in middleware function in Express that parses incoming requests with JSON payloads and is based on body-parser.
 app.use(helmet());//helmet is a middleware that helps secure Express apps by setting various HTTP headers
 app.use(cors());

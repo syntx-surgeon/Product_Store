@@ -107,4 +107,6 @@ function AddProductModal() {
     </dialog>
   );
 }
+
+
 export default AddProductModal;
