@@ -1,3 +1,4 @@
+import { Package2Icon } from 'lucide-react';
 import React from 'react'
 
 const AddProductModal = () => {
@@ -20,7 +21,12 @@ const AddProductModal = () => {
                         <span className='label-text text-base font-medium'>Product Name</span>
                       </label>
                       <div className='relative'>
-                        <div className=''></div>
+                        <div className='absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/50 '>
+                        <Package2Icon className='size-5'/>
+                        </div>
+
+                        <input type="text" placeholder="Enter product name" className="input input-bordered w-full pl-10 py-3 focus:input-primary transition-colors duration-200"
+                        value={FormData.name} onChange={(e) => setFormData({ ...FormData, name: e.target.value })} />
                       </div>
                     </div>
                 </div>
