@@ -51,7 +51,7 @@ const BASE_URL="http://localhost:3000";
             }catch(error)
             {
                 if(error.status==429)set({error:"Rate Limit exceeded"});
-                else set ({error:"Something went wrong"});
+                else set({error:"Failed to fetch products"});
             }finally{
                 set({loading:false})
             }

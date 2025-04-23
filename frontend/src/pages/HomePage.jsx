@@ -13,8 +13,9 @@ const HomePage = () => {
   return (
     <main className='max-w-6xl mx-auto px-4 py-8 '>
       <div className='flex justify-between items-center mb-8'>
-        <button className='btn btn-primary'>
-          <PlusCircleIcon className='size-5 mr-2' />Add Product
+        <button className='btn btn-primary' onClick={() => document.getElementById("add-product-modal").showModal()}>
+          <PlusCircleIcon className='size-5 mr-2' />
+          Add Product
         </button>
 
         <button className='btn btn-ghost btn-circle' onClick={fetchProducts}>
@@ -48,7 +49,7 @@ const HomePage = () => {
         </div>
 
       ) : error ? (
-        <div className="text-center text-error">Failed to load products: {error.message}</div>
+        <div className="text-center text-error">{/*you can display the message after loading */}{error.message}</div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product) => (
