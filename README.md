@@ -3,6 +3,7 @@
 
 A simple and professional full-stack e-commerce product store using the PERN stack: 🐘 PostgreSQL (Neon), 🚂 Express.js, ⚛️ React.js, and 🟢 Node.js.
 
+
 ## ✨ Features
 
 - 📝 Product CRUD operations

@@ -1,5 +1,6 @@
 # PERN Stack Product Store Frontend
 
+
 This is the **frontend** for the PERN Stack Product Store, built with React.js and styled using TailwindCSS. It communicates with the backend API to display, create, update, and delete products.
 
 ## Features

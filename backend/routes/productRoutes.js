@@ -9,6 +9,7 @@ import { createProduct,
 const router =express.Router();
 
 
+//fetch all products
  router.get("/",getProducts);
 //fetch the specific products
  router.get("/:id",getProduct);

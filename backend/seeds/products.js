@@ -1,5 +1,8 @@
 import {sql} from "../config/db.js";
 
+
+// Sample product data to seed the database
+// You can add more products or modify the existing ones as needed
 const SAMPLE_PRODUCTS = [
     {
         name:"Premium Headphones",

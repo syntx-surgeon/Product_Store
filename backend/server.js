@@ -7,9 +7,8 @@ import dotenv from "dotenv";
 import productRoutes from "./routes/productRoutes.js";
 import { sql } from "./config/db.js";
 import { aj } from './lib/arcjet.js';
-
-
 dotenv.config();
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -56,10 +55,10 @@ app.use(async (req, res, next) => {
 
 
 
-
+//routes
 app.use("/api/products", productRoutes);
 
-
+//Connecting Database
 async function initDB() {
    try {
       await sql`

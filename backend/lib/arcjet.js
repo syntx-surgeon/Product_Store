@@ -20,6 +20,7 @@ export const aj=arcjet({
                 // see the full list at https://arcjet.com//bot-list
             ]
         }),
+
         //rate limiting
         // another apporach is slidingWindow({})
         //tokenbucket algorithm
@@ -30,4 +31,5 @@ export const aj=arcjet({
             capacity:10,
         }),
     ],
+    
 });
